@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+                xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+<div th:replace="common/header :: navbar"/>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+
+    <h1 class="mt-5"> [ ink ] CATALOG </h1>
+
+    <div class="row" style="margin-top:30px;">
+
+        <div class="col">
+            <div th:if="${emptyList}">
+                <h5> No items to sale yet. Come back in a few days </h5>
+            </div>
+
+            <table id="itemList" border="0">
+                <th><tr><th></th></tr></th>
+                <tbody>
+                <tr class="item" data-th-each="item : ${catalog}">
+                    <div th:if="item != null">
+                        <div class="catalog-item-in-list">
+                            <div class="row" >
+
+                                <div class="col-9">
+                                    <!--a th:href="@{/catalogItem?id=}+${item.id}"><h4 th:text="${item.name}">€</h4></a-->
+                                    <span th:text="${#strings.abbreviate(item.description, 500)}"></span>
+                                    <div class="catalog-item-price" th:text="${#numbers.formatDecimal(item.price, 0, 'COMMA', 2, 'POINT')}">Price</div>
+                                </div>
+                                <div class="col-3">
+                                    <form  method="post" th:action="@{/shoppingCart/addItem?id=}+${item.id}">
+                                    <div class="row">
+                                        <div class="col-3-offset-3">
+                                            <span>Qty</span>
+                                        </div>
+                                        <div class="col-3">
+                                            <select class="selectpicker" id="quantity" name="quantity" data-style="btn-info">
+                                                <option th:each="quantity : ${qtyList}" th:value="${quantity}" th:text="${quantity}"}/>
+                                            </select>
+                                        </div>
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-info">Add to cart</button>
+                                        </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<div th:replace="common/footer :: footer"/>
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

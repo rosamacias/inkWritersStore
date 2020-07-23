@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+<div th:replace="common/header :: navbar"/>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+
+    <div class="row">
+        <div class="col-xs-12 align-self-center" >
+            <h1 class="mt-5">  Welcome to [ ink ] Writers Store.  </h1>
+            <div><h1><a th:href="@{catalog}">Visit our CATALOG</a></h1></div>
+        </div>
+    </div>
+
+
+</main>
+
+<div th:replace="common/footer :: footer"/>
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

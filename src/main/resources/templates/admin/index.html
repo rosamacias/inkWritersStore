@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+
+<body>
+
+<div th:replace="common/header :: navbar"/>
+
+<!-- Begin page content -->
+<main role="main" class="container">
+
+    <div class="row">
+        <div class="col-xs-12 align-self-center" >
+            <h1 class="mt-5">  [ ink ]  ADMIN </h1>
+            <b>[<span th:text="${status}">status</span>]
+             <span th:text="${error}">error</span>
+            </b>
+            <p th:text="${message}">message</p>
+        </div>
+    </div>
+</main>
+</body>
+</html>
